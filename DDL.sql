@@ -27,6 +27,8 @@ CONSTRAINT CK_CNPJ CHECK (CNPJ LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-
 
 CREATE TABLE ValorConsulta (id_valor_consulta INT IDENTITY PRIMARY KEY, NomeConsulta varchar(200), Valor decimal NOT NULL)
 
+CREATE TABLE MedicoConsultorio (id_med_consul INT IDENTITY PRIMARY KEY, id_medico INT FOREIGN KEY REFERENCES Medico(id_medico), id_clinica INT FOREIGN KEY REFERENCES Clinica(id_clinica))
+
 CREATE TABLE Consulta (id_consulta INT IDENTITY PRIMARY KEY, horario_consulta DATETIME NOT NULL, descricao varchar(1500) NOT NULL,id_medico INT FOREIGN KEY REFERENCES Medico(id_medico) NOT NULL,
 id_situacao INT FOREIGN KEY REFERENCES Situacao(id_situacao) NOT NULL, id_paciente INT FOREIGN KEY REFERENCES Paciente(id_paciente) NOT NULL, 
 id_valor_consulta INT FOREIGN KEY REFERENCES ValorConsulta(id_valor_consulta) NOT NULL, id_clinica INT FOREIGN KEY REFERENCES Clinica(id_clinica) NOT NULL)

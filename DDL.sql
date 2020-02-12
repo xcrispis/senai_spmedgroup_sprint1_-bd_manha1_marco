@@ -5,7 +5,7 @@ USE medgroup
 
 CREATE TABLE TipoUsuario (id_tipo INT IDENTITY PRIMARY KEY, NomeTipo varchar(100) not null)
 
-CREATE TABLE Usuario (id_usuario INT IDENTITY PRIMARY KEY, Nome varchar(255) not null,  RG nchar(9) not null unique, CPF nvarchar(11) not null unique,
+CREATE TABLE Usuario (id_usuario INT IDENTITY PRIMARY KEY, Nome varchar(255) not null,  RG nchar(9) not null unique, telefone varchar(14) not null, CPF nvarchar(11) not null unique,
 Endereco nvarchar(300) not null, DataNascimento DATE not null, Email nvarchar(300) not null unique, Senha nvarchar(300) not null,
 CONSTRAINT CK_CPF CHECK (CPF LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
 CONSTRAINT CK_RG CHECK (RG LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'), id_tipo INT FOREIGN KEY REFERENCES TipoUsuario(id_tipo) not null)
